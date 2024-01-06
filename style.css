@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&family=Maven+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,300&family=Maven+Pro&family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Space+Mono&display=swap');
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #24292e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0;
+    /* Remove default margin */
+}
+
+.timerbox {
+    width: 30vw;
+    height: 20vw;
+    margin-right: 6vw;
+    margin-left: 6vw;
+    margin-bottom: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #343b42;
+    color: white;
+    border-radius: 15px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 5rem;
+}
+
+.mini-text {
+    font-size: 2rem;
+    font-style: italic;
+}
+
+.timerbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    color: white;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.options-container {
+    width: 80%;
+    height: 10%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    background-color: #343b42;
+    border-radius: 20px;
+}
+
+#switch {
+    margin-top: 6rem;
+    width: 10vw;
+    height: 7vh;
+    border-radius: 5rem;
+    background-color: #343b42;
+    border-color: black;
+    border-width: 1px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.5rem;
+    transition: border-color 1s, box-shadow 1s;
+}
+
+.selected-timer {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+}
+
+#switch:hover {
+    animation: switch-animation 0.25s forwards;
+}
+
+@keyframes switch-animation {
+    100% {
+        outline: none;
+        border-color: white;
+        box-shadow: 0 0 5px rgb(255, 255, 255);
+    }
+}
+
+/*----------Options Stuff-------*/
+.option {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.25rem;
+    font-style: normal;
+    color: black;
+}
+
+.option input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #222324;
+    border-radius: 5px;
+    width: 3rem;
+    background-color: #343b42;
+    color: black;
+}
+
+.option input:focus {
+    outline: none;
+    border-color: white;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/*------Sound----------*/
+
+.sound-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.sound-options p {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 1.25rem;
+    font-style: normal;
+    color: black;
+}
+
+.sound {
+    --secondary-container: #3a4b39;
+    --primary: #84da89;
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.7em;
+    height: 1.8em;
+}
+
+.sound input {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #313033;
+    transition: .2s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.4em;
+    width: 1.4em;
+    border-radius: 20px;
+    left: 0.2em;
+    bottom: 0.2em;
+    background-color: #aeaaae;
+    transition: .4s;
+}
+
+input:checked+.slider::before {
+    background-color: var(--primary);
+}
+
+input:checked+.slider {
+    background-color: var(--secondary-container);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--secondary-container);
+}
+
+input:checked+.slider:before {
+    transform: translateX(1.9em);
+}
+
+
+
+
+
+
+
+
+
+/*------ Settings ------*/
+.container {
+    --color: #a5a5b0;
+    --size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--size);
+    user-select: none;
+    fill: var(--color);
+}
+
+.container .play {
+    position: absolute;
+    animation: keyframes-fill .5s;
+}
+
+.container .pause {
+    position: absolute;
+    display: none;
+    animation: keyframes-fill .5s;
+}
+
+/* ------ On check event ------ */
+.container input:checked~.play {
+    display: none;
+}
+
+.container input:checked~.pause {
+    display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+    0% {
+        transform: rotate(-180deg) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: rotate(-10deg) scale(1.2);
+    }
+}
