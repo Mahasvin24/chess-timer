@@ -76,7 +76,7 @@ class Time {
                 document.getElementById("player" + this.id + "-miliseconds").innerHTML = "00";
                 this.turn = false;
                 if (sound) {
-                    let mySound = new Audio('alarm-ringing.mp3');
+                    let mySound = new Audio('Media/alarm-ringing.mp3');
                     mySound.play();
                 }
                 alert("Player " + this.id + " ran out of time!");
@@ -146,7 +146,7 @@ document.getElementById("custom-time").addEventListener("change", () => {
 document.getElementById("switch").addEventListener("click", () => {
     // Playing sound
     if (play && sound) {
-        let mySound = new Audio('switch-sound.mp3');
+        let mySound = new Audio('Media/switch-sound.mp3');
         mySound.play();
     }
     
