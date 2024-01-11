@@ -205,4 +205,3 @@ document.getElementById("play").addEventListener("click", () => {
 document.getElementById("sound-slider").addEventListener("click", () => {
     sound = document.getElementById("sound-slider").checked;
 });
-
