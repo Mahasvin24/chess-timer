@@ -1,3 +1,17 @@
+// Blob JS
+
+const blob = document.getElementById("blob");
+
+window.onpointermove = event => { 
+  const { clientX, clientY } = event;
+  
+  blob.animate({
+    left: `${clientX}px`,
+    top: `${clientY}px`
+  }, { duration: 3000, fill: "forwards" });
+}
+
+
 function htmlNum(number) {
     if (number < 10) {
         return "0" + number;

@@ -5,14 +5,10 @@
 body {
     width: 100%;
     height: 100vh;
-    background-color: #24292e;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    background-color: #1D1D1F;
     overflow: hidden;
     margin: 0;
-    /* Remove default margin */
+    padding: 0;
 }
 
 .timerbox {
@@ -24,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #343b42;
+    background-color: #25282b;
     color: white;
     border-radius: 15px;
     font-family: 'Roboto Mono', monospace;
@@ -41,15 +37,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: row;
-}
-
-.title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
-    font-weight: 800;
-    color: white;
-    margin-top: 0;
-    padding-top: 0;
+    margin-top: 6rem;
 }
 
 .options-container {
@@ -59,8 +47,9 @@ body {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    background-color: #343b42;
+    background-color: #25282b;
     border-radius: 20px;
+    margin-left: 10vw;
 }
 
 #switch {
@@ -68,12 +57,13 @@ body {
     width: 10vw;
     height: 7vh;
     border-radius: 5rem;
-    background-color: #343b42;
+    background-color: #25282b;
     border-color: black;
     border-width: 1px;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.5rem;
     transition: border-color 1s, box-shadow 1s;
+    color: white;
 }
 
 .selected-timer {
@@ -99,7 +89,7 @@ body {
     font-family: 'Libre Franklin', sans-serif;
     font-size: 1.25rem;
     font-style: normal;
-    color: black;
+    color: #aeaeb0;
 }
 
 .option input {
@@ -118,7 +108,37 @@ body {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
+/*----------Navbar Stuff-------*/
+nav {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: gray 1px solid;
+    background-color: #1D1D1F;
+    overflow: hidden;
+}
+
+nav h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fdf7f1;
+    justify-content: left;
+    margin-left: 2rem;
+}
+
+.nav-links {
+    font-size: 2rem;
+    margin-right: 2rem;
+}
+
 /*------Sound----------*/
+
+#sound-title {
+    color: #aeaeb0;
+}
 
 .sound-options {
     display: flex;
@@ -136,7 +156,7 @@ body {
 
 .sound {
     --secondary-container: #3a4b39;
-    --primary: #84da89;
+    --primary: #7dda82;
     font-size: 17px;
     position: relative;
     display: inline-block;
@@ -251,5 +271,121 @@ input:checked+.slider:before {
 
     50% {
         transform: rotate(-10deg) scale(1.2);
+    }
+}
+
+/* ------ Background Blob ------ */
+@keyframes rotate {
+    from {
+        rotate: 0deg;
+    }
+
+    50% {
+        scale: 1 1.25;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+
+#blob {
+    background-color: white;
+    height: 34vmax;
+    aspect-ratio: 1;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    background: linear-gradient(to right, skyblue, mediumpurple);
+    animation: rotate 20s infinite;
+    opacity: 0.2;
+    z-index: -10;
+}
+
+#blur {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    backdrop-filter: blur(12vmax);
+    z-index: -5;
+}
+
+/*------ Social Media Icons ------*/
+.card {
+    width: fit-content;
+    height: fit-content;
+    background-color: #1D1D1F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px;
+    gap: 20px;
+}
+
+/* for all social containers*/
+.socialContainer {
+    width: 52px;
+    height: 52px;
+    border-radius: 5px;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: 0.3s;
+}
+
+/* instagram*/
+.containerOne:hover {
+    background-color: #d62976;
+    transition-duration: 0.3s;
+}
+
+/* twitter*/
+.containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: 0.3s;
+}
+
+/* linkdin*/
+.containerThree:hover {
+    background-color: #0072b1;
+    transition-duration: 0.3s;
+}
+
+/* Whatsapp*/
+.containerFour:hover {
+    background-color: black;
+    transition-duration: 0.3s;
+}
+
+.socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: 0.3s;
+}
+
+.socialSvg {
+    width: 17px;
+}
+
+.socialSvg path {
+    fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
